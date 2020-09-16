@@ -1,3 +1,9 @@
 [build]
     functions = "functions"
     publish = "client"
+
+[template.environment]
+    AIRTABLE_API_KEY = "Your Account's API Key"
+    AIRTABLE_BASE_ID = "Your Base's ID"
+    PASSPHRASE = "Must provide this when loading page"
+    URL_404 = "Fallback if a link is incorrect"
