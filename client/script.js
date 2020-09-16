@@ -14,7 +14,7 @@ const app = new Vue({
   data: {
     createView: false,
     campaigns: false,
-    passphrase: 'moo',
+    passphrase: '',
     form: {
       destination: ''
     },
