@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div v-if="createView && !campaigns">
+        <div class="input-group">
+          <label for="passphrase">Passphrase</label>
+          <input type="password" id="passphrase" v-model="passphrase" />
+        </div>
+        <button @click="getCampaigns">Submit</button>
+      </div>
+      <div v-if="campaigns">
+        <div class="input-group">
+          <label for="url">URL</label>
+          <input
+            type="text"
+            id="url"
+            placeholder="https://"
+            v-model="form.destination"
+          />
+        </div>
+        <div class="input-group">
+          <label for="short">Desired Short URL</label>
+          <input
+            type="text"
+            id="short"
+            placeholder="Leave blank for randomly generated link"
+            v-model="form.origin"
+          />
+        </div>
+        <div class="input-group">
+          <label for="campaign">Campaign</label>
+          <select id="campaign" v-if="campaigns" v-model="form.campaign">
+            <option disabled selected>Select Campaign</option>
+            <option v-for="campaign in campaigns" :value="campaign.id">
+              {{campaign.fields.name}}
+            </option>
+          </select>
+        </div>
+        <button @click="createLink">Create Link</button>
+
+        <div class="outcome" v-if="response">
+          <input type="text" disabled :value="response" />
+          <button @click="copyLink">Copy</button>
+        </div>
+
+        <h2>Create new campaign</h2>
+        <div class="input-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" v-model="newCampaignName" />
+        </div>
+        <button @click="createCampaign">Create Campaign</button>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

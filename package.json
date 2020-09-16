@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "airtable-plus": "^1.0.4"
+    "airtable-plus": "^1.0.4",
+    "shortid": "^2.2.15"
   }
 }
